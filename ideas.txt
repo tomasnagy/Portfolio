@@ -1,2 +1,9 @@
+Todo:
+	- set description absolute
+	- animate height
+
+
 Portfolio ideas:
-	- 
+	- First page
+		- whoami?
+	- Projects
