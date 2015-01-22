@@ -6,5 +6,5 @@ var livereload = require('gulp-livereload'),
 
 gulp.task('livereloader', function() {
     livereload.listen();
-    gulp.watch(['public/**/*.js', 'public/**/*.css', 'views/*.ejs']).on('change', livereload.changed);
+    gulp.watch(['public/**/*.js', 'public/**/*.css', 'public/**/*.scss', 'views/*.ejs']).on('change', livereload.changed);
 });

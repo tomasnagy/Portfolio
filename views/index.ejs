@@ -2,10 +2,42 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/normalize.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href='http://fonts.googleapis.com/css?family=Exo:400,500italic,200italic' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div id="box-up">
+        <a href="#">WHOAMI</a>
+    </div>
+
+    <div id="divider">
+
+    </div>
+
+    <div id="box-down">
+        <a href="#">PROJECTS</a>
+        <div class="container">
+            <div class="project-item">
+                <div class="description">
+
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="description">
+
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="description">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascripts/velocity.min.js"></script>
+    <script src="/javascripts/main.js"></script>
   </body>
 </html>

@@ -1,12 +1,10 @@
 html, body {
-  height : 100%;
+  height: 100%;
   width: 100%;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 body {
-  font-family: Exo;
-}
+  font-family: Exo; }
 
 a {
   color: #000;
@@ -17,65 +15,49 @@ a {
   position: absolute;
   text-decoration: none;
   right: 85%;
-  z-index: 100;
-}
+  z-index: 100; }
 
 #divider {
   background-color: #000;
   height: 1px;
-  width: 15%;
-}
+  width: 15%; }
 
 #box-up {
   height: 66.66%;
-  position: relative;
-
-  > a {
-    bottom: 1%;
-  }
-}
+  position: relative; }
+  #box-up > a {
+    bottom: 1%; }
 
 #box-down {
   background-color: #e6e5e5;
   height: 33.33%;
-  position: relative;
-
-  > a {
+  position: relative; }
+  #box-down > a {
     top: 1%;
     color: #fff;
-    opacity: 0.2;
-  }
-
-  > .container {
-    opacity: 0;
-  }
-}
+    opacity: 0.2; }
+  #box-down > .container {
+    opacity: 0; }
 
 .container {
   margin: 0 auto;
   padding: 10% 5% 0 5%;
   width: 90%;
-  height: 100%;
-
-  > .project-item {
+  height: 100%; }
+  .container > .project-item {
     background-color: #f00;
     float: left;
     height: 50%;
     margin: 0 0 5% 0;
     overflow: hidden;
-    width: 30%;
-
-    &:nth-child(2) {
-      margin: 0 5% 0 5%;
-    }
-  }
-}
+    width: 30%; }
+    .container > .project-item:nth-child(2) {
+      margin: 0 5% 0 5%; }
 
 .description {
   background-color: #fff;
   margin-top: 66.66%;
   height: 33.33%;
-  width: 100%;
+  width: 100%; }
 
-}
-
+/*# sourceMappingURL=style.css.map */
