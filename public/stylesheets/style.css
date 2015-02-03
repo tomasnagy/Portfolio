@@ -30,9 +30,12 @@ a {
     bottom: 1%; }
   #box-up > .container {
     padding-top: 2%; }
-  #box-up img {
-    width: 100%;
-    height: 50%; }
+  #box-up #profile > div, #box-up #project-detail > div {
+    height: 50%;
+    overflow: hidden;
+    width: 100%; }
+    #box-up #profile > div > img, #box-up #project-detail > div > img {
+      width: 100%; }
 
 #profile {
   clear: both;
@@ -59,7 +62,24 @@ a {
     color: #fff;
     opacity: 0.2; }
   #box-down > .container {
-    opacity: 0; }
+    opacity: 0;
+    position: relative; }
+  #box-down > #next {
+    background-color: #000;
+    height: 3px;
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    width: 70px;
+    transform: rotate(-45deg); }
+    #box-down > #next::after {
+      content: "";
+      display: inline-block;
+      width: 70px;
+      height: 3px;
+      transform: rotate(90deg);
+      background-color: #000;
+      top: 20%; }
 
 .container {
   margin: 0 auto;

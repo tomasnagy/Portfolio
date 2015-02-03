@@ -16,9 +16,6 @@ var startAnimations = function (data) {
         all = [whoami, projects, boxUp, boxDown, containerDown, descriptions, containerUp, containerDown],
         isDown = true;
 
-
-
-
     // create project items
     (function() {
         var htmlBuilder = '',
@@ -39,7 +36,6 @@ var startAnimations = function (data) {
         projectItems = document.getElementsByClassName('project-item');
         i = projectItems.length - 1;
     })();
-
 
     // clicks
     whoami.addEventListener('click', function (e) {
@@ -127,7 +123,7 @@ var startAnimations = function (data) {
             if (!isDown) {
                 // fill project with details
                 var id = Number(e.currentTarget.children[1].children[1].textContent);
-                projectDetail.children[0].src = data[id].img;
+                projectDetail.children[0].children[0].src = data[id].img;
                 projectDetail.children[1].textContent = data[id].title;
                 projectDetail.children[2].textContent = data[id].description;
 
@@ -146,8 +142,6 @@ var startAnimations = function (data) {
                     Velocity(projects, {opacity: 1}, 250);
                     whoami.style.display = 'none';
                 }, 500);
-
-
             }
         });
     }

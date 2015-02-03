@@ -39,9 +39,14 @@ a {
     padding-top: 2%;
   }
 
-  img {
-    width: 100%;
+ #profile > div, #project-detail > div {
     height: 50%;
+    overflow: hidden;
+    width: 100%;
+
+   > img {
+     width: 100%;
+   }
   }
 }
 
@@ -80,6 +85,28 @@ a {
 
   > .container {
     opacity: 0;
+    position: relative;
+  }
+
+
+  > #next {
+    background-color: #000;
+    height: 3px;
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    width: 70px;
+    transform: rotate(-45deg);
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 70px;
+      height: 3px;
+      transform: rotate(90deg);
+      background-color: #000;
+      top: 20%;
+    }
   }
 }
 
