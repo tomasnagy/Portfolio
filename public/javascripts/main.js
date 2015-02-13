@@ -5,7 +5,7 @@
     var request;
 
     request = new XMLHttpRequest();
-    request.open('GET', window.location.host + '/data/data.json', true);
+    request.open('GET', window.location.host + 'javascripts/data/data.json', true);
     request.addEventListener('load', function () {
         if (request.status >= 200 && request.status <= 400) {
             var data = JSON.parse(request.responseText);
