@@ -11,9 +11,11 @@ var startAnimations = function (data) {
         descriptions = document.getElementsByClassName('description'),
         projectDetail = document.getElementById('project-detail'),
         profile = document.getElementById('profile'),
+        next = document.getElementById('next'),
+        back = document.getElementById('back'),
         projectItems,
         i,
-        all = [whoami, projects, boxUp, boxDown, containerDown, descriptions, containerUp, containerDown],
+        all = [whoami, projects, boxUp, boxDown, containerDown, descriptions, containerUp, containerDown, back, next],
         isDown = true;
 
     // create project items
@@ -49,6 +51,7 @@ var startAnimations = function (data) {
             Velocity(containerDown, {opacity: 0}, 500);
             Velocity(containerUp, {opacity: 1}, {duration: 400, delay: 200});
             Velocity(descriptions, {height: '0'}, 500);
+            Velocity([back, next], {opacity: 0}, 200);
 
             isDown = true;
         }
@@ -65,6 +68,7 @@ var startAnimations = function (data) {
             Velocity(containerDown, {opacity: 1}, {duration: 500, delay: 250});
             Velocity(containerUp, {opacity: 0}, 500);
             Velocity(descriptions, {height: '33.33%'}, {duration: 250, delay: 450, queue: false});
+            Velocity([back, next], {opacity: 0.2}, 200);
             isDown = false;
         }
 
@@ -79,6 +83,7 @@ var startAnimations = function (data) {
             Velocity(descriptions, {height: '33.33%'}, {duration: 250, delay: 450, queue: false});
             Velocity(profile, {opacity: 1}, {duration: 0, delay: 500});
             Velocity(projectDetail, {opacity: 0}, {duration: 0, delay: 500});
+            Velocity([back, next], {opacity: 0.2}, 200);
 
             setTimeout(function () {
                 projects.textContent = 'PROJECTS';
@@ -137,6 +142,8 @@ var startAnimations = function (data) {
                 Velocity(projectDetail, {opacity: 1}, 0);
                 Velocity(profile, {opacity: 0}, 0);
                 Velocity(containerUp, {opacity: 1}, {duration: 400, delay: 200});
+                Velocity([back, next], {opacity: 0}, 200);
+
                 setTimeout(function () {
                     projects.textContent = 'BACK';
                     Velocity(projects, {opacity: 1}, 250);

@@ -6,17 +6,33 @@ html, body {
 body {
   font-family: Exo; }
 
+h1, h2, h3, button {
+  font-weight: 200; }
+
 a {
   color: #000;
   font-size: 2.5vw;
   font-style: italic;
-  font-weight: 200;
+  font-weight: 100;
   padding: 0.5%;
   position: absolute;
   text-decoration: none;
   right: 85%;
   user-select: none;
   z-index: 100; }
+
+button {
+  background: none;
+  border: solid 1px #e6e5e5;
+  transition: color .5s;
+  transition: border .2s;
+  color: #e6e5e5; }
+  button:hover {
+    color: #000;
+    border: solid 1px rgba(0, 0, 0, 0.4); }
+
+p {
+  font-family: "HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 #divider {
   background-color: #000;
@@ -64,22 +80,38 @@ a {
   #box-down > .container {
     opacity: 0;
     position: relative; }
-  #box-down > #next {
-    background-color: #000;
-    height: 3px;
+  #box-down > #next, #box-down > #back {
+    width: 40px;
+    height: 145px;
     position: absolute;
-    right: 2%;
-    top: 50%;
-    width: 70px;
-    transform: rotate(-45deg); }
-    #box-down > #next::after {
+    top: 42%;
+    right: 1%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .4s; }
+    #box-down > #next:hover, #box-down > #back:hover {
+      opacity: 1 !important; }
+    #box-down > #next > div, #box-down > #back > div {
+      background-color: #df6464;
+      height: 3px;
+      width: 70px;
+      position: absolute;
+      top: 40px;
+      left: -14px;
+      transform: rotate(65deg); }
+    #box-down > #next::after, #box-down > #back::after {
       content: "";
-      display: inline-block;
+      display: block;
       width: 70px;
       height: 3px;
-      transform: rotate(90deg);
-      background-color: #000;
-      top: 20%; }
+      transform: rotate(115deg);
+      background-color: #df6464;
+      top: 103px;
+      right: -16px;
+      position: absolute; }
+  #box-down > #back {
+    transform: rotate(180deg);
+    left: 1%; }
 
 .container {
   margin: 0 auto;
