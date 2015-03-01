@@ -19,25 +19,28 @@ var startAnimations = function (data) {
         isDown = true;
 
     // create project items
-    (function() {
-        var htmlBuilder = '',
-            j = 0,
-            l = data.length
-        for(j; j < l; j++) {
-            var item = '<div class="project-item"><img src="';
-            item += data[j].img;
-            item += '"/>';
-            item +='<div class="description"><h3>';
-            item += data[j].title;
-            item += '</h3><p class="hidden">';
-            item += data[j].id;
-            item += '</p></div></div>';
-            htmlBuilder += item;
-        }
-        containerDown.innerHTML = htmlBuilder;
-        projectItems = document.getElementsByClassName('project-item');
-        i = projectItems.length - 1;
-    })();
+    containerDown.innerHTML = ProjectSlider.init(data);
+    addAnimationsToItems();
+
+    //(function() {
+    //    var htmlBuilder = '',
+    //        j = 0,
+    //        l = data.length
+    //    for(j; j < l; j++) {
+    //        var item = '<div class="project-item"><img src="';
+    //        item += data[j].img;
+    //        item += '"/>';
+    //        item +='<div class="description"><h3>';
+    //        item += data[j].title;
+    //        item += '</h3><p class="hidden">';
+    //        item += data[j].id;
+    //        item += '</p></div></div>';
+    //        htmlBuilder += item;
+    //    }
+    //    containerDown.innerHTML = htmlBuilder;
+    //    projectItems = document.getElementsByClassName('project-item');
+    //    i = projectItems.length - 1;
+    //})();
 
     // clicks
     whoami.addEventListener('click', function (e) {
@@ -122,34 +125,54 @@ var startAnimations = function (data) {
         }
     });
 
-    // project details
-    for (i; i >= 0; i--) {
-        projectItems[i].addEventListener('click', function (e) {
-            if (!isDown) {
-                // fill project with details
-                var id = Number(e.currentTarget.children[1].children[1].textContent);
-                projectDetail.children[0].children[0].src = data[id].img;
-                projectDetail.children[1].textContent = data[id].title;
-                projectDetail.children[2].textContent = data[id].description;
 
-                // animations
-                Velocity(all, 'stop');
-                Velocity(boxDown, {height: '33.33%'}, 500);
-                Velocity(whoami, {opacity: 0}, 100);
-                Velocity(boxUp, {height: '66.66%'}, 500);
-                Velocity(containerDown, {opacity: 0}, 500);
-                Velocity(projects, {opacity: 0}, 250);
-                Velocity(projectDetail, {opacity: 1}, 0);
-                Velocity(profile, {opacity: 0}, 0);
-                Velocity(containerUp, {opacity: 1}, {duration: 400, delay: 200});
-                Velocity([back, next], {opacity: 0}, 200);
+    next.addEventListener('click', function () {
+        containerDown.innerHTML = ProjectSlider.createNextItems();
+        addAnimationsToItems();
+    });
 
-                setTimeout(function () {
-                    projects.textContent = 'BACK';
-                    Velocity(projects, {opacity: 1}, 250);
-                    whoami.style.display = 'none';
-                }, 500);
-            }
-        });
+    back.addEventListener('click', function() {
+        containerDown.innerHTML = ProjectSlider.createPreviousItem();
+        addAnimationsToItems();
+    });
+
+    function addAnimationsToItems() {
+        var i = ProjectSlider.getLength() - 1,
+            projectItems = document.getElementsByClassName('project-item');
+
+        if(i > 2) {
+            i = 2;
+        }
+
+        // project details
+        for (i; i >= 0; i--) {
+            projectItems[i].addEventListener('click', function (e) {
+                if (!isDown) {
+                    // fill project with details
+                    var id = Number(e.currentTarget.children[1].children[1].textContent);
+                    projectDetail.children[0].children[0].src = data[id].img;
+                    projectDetail.children[1].textContent = data[id].title;
+                    projectDetail.children[2].textContent = data[id].description;
+
+                    // animations
+                    Velocity(all, 'stop');
+                    Velocity(boxDown, {height: '33.33%'}, 500);
+                    Velocity(whoami, {opacity: 0}, 100);
+                    Velocity(boxUp, {height: '66.66%'}, 500);
+                    Velocity(containerDown, {opacity: 0}, 500);
+                    Velocity(projects, {opacity: 0}, 250);
+                    Velocity(projectDetail, {opacity: 1}, 0);
+                    Velocity(profile, {opacity: 0}, 0);
+                    Velocity(containerUp, {opacity: 1}, {duration: 400, delay: 200});
+                    Velocity([back, next], {opacity: 0}, 200);
+
+                    setTimeout(function () {
+                        projects.textContent = 'BACK';
+                        Velocity(projects, {opacity: 1}, 250);
+                        whoami.style.display = 'none';
+                    }, 500);
+                }
+            });
+        }
     }
 }
