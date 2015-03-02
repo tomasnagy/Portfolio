@@ -13,34 +13,12 @@ var startAnimations = function (data) {
         profile = document.getElementById('profile'),
         next = document.getElementById('next'),
         back = document.getElementById('back'),
-        projectItems,
-        i,
         all = [whoami, projects, boxUp, boxDown, containerDown, descriptions, containerUp, containerDown, back, next],
         isDown = true;
 
     // create project items
     containerDown.innerHTML = ProjectSlider.init(data);
     addAnimationsToItems();
-
-    //(function() {
-    //    var htmlBuilder = '',
-    //        j = 0,
-    //        l = data.length
-    //    for(j; j < l; j++) {
-    //        var item = '<div class="project-item"><img src="';
-    //        item += data[j].img;
-    //        item += '"/>';
-    //        item +='<div class="description"><h3>';
-    //        item += data[j].title;
-    //        item += '</h3><p class="hidden">';
-    //        item += data[j].id;
-    //        item += '</p></div></div>';
-    //        htmlBuilder += item;
-    //    }
-    //    containerDown.innerHTML = htmlBuilder;
-    //    projectItems = document.getElementsByClassName('project-item');
-    //    i = projectItems.length - 1;
-    //})();
 
     // clicks
     whoami.addEventListener('click', function (e) {
@@ -127,14 +105,40 @@ var startAnimations = function (data) {
 
 
     next.addEventListener('click', function () {
-        containerDown.innerHTML = ProjectSlider.createNextItems();
+        if(!ProjectSlider.isEnd())
+            containerDown.innerHTML = ProjectSlider.createNextItems();
+        showOrHideScrollButtons();
         addAnimationsToItems();
     });
 
     back.addEventListener('click', function() {
-        containerDown.innerHTML = ProjectSlider.createPreviousItem();
+        if(!ProjectSlider.isStart())
+            containerDown.innerHTML = ProjectSlider.createPreviousItem();
+        showOrHideScrollButtons();
         addAnimationsToItems();
     });
+
+    function showOrHideScrollButtons() {
+        if(ProjectSlider.isStart()) {
+            Velocity(back, {opacity: 0}, 100);
+            setTimeout(function() {
+                back.classList.add('hidden');
+            }, 200);
+        } else {
+            back.classList.remove('hidden');
+            Velocity(back, {opacity: 1}, 100);
+        }
+
+        if(ProjectSlider.isEnd()) {
+            Velocity(next, {opacity: 0}, 100);
+            setTimeout(function() {
+                next.classList.add('hidden');
+            }, 200);
+        } else {
+            next.classList.remove('hidden');
+            Velocity(next, {opacity: 1}, 100);
+        }
+    }
 
     function addAnimationsToItems() {
         var i = ProjectSlider.getLength() - 1,

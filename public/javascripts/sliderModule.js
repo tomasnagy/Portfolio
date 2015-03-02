@@ -54,12 +54,22 @@ var ProjectSlider = (function() {
             console.log(data.length);
             console.log(currentPos);
           return (data.length) - currentPos;
+        },
+
+        isStart = function() {
+            return currentPos <= 0;
+        },
+
+        isEnd = function() {
+            return (currentPos + 3)>=(data.length );
         };
 
     return {
         init: init,
         createNextItems: createNextItems,
         createPreviousItem: createPreviousItems,
-        getLength: getLength
+        getLength: getLength,
+        isStart: isStart,
+        isEnd: isEnd
     };
 })();
