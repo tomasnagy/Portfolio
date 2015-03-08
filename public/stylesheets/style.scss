@@ -193,4 +193,14 @@ p {
   visibility: hidden;
 }
 
+@media all and (max-width: 1160px) {
+    #profile, #project-detail {
+      float: none;
+      width: 80%;
+      margin: 0 auto;
+    }
 
+    #divider, #box-down > a, #box-up > a {
+      display: none;
+    }
+}

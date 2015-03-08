@@ -62,6 +62,9 @@ var ProjectSlider = (function() {
 
         isEnd = function() {
             return (currentPos + 3)>=(data.length );
+        },
+        allItems = function() {
+            return data;
         };
 
     return {
@@ -70,6 +73,7 @@ var ProjectSlider = (function() {
         createPreviousItem: createPreviousItems,
         getLength: getLength,
         isStart: isStart,
-        isEnd: isEnd
+        isEnd: isEnd,
+        allItems: allItems
     };
 })();
